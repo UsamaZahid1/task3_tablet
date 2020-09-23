@@ -3,12 +3,12 @@
     <color name="colorPrimary">#EA7090</color>
     <color name="colorPrimaryDark">#EE8084</color>
     <color name="colorAccent">#EE8084</color>
-    <color name="transparent">#70000000</color>
+    <color name="transparent">#95000000</color>
     <color name="gradientStart">#EE8084</color>
     <color name="gradientEnd">#EA7090</color>
     <color name="white">#FFFFFF</color>
     <color name="lgrey">#DDDDDD</color>
-    <color name="today">#4b82ff</color>
+    <color name="today">#EA7090</color>
     <color name="greyed_out">#c7c7c7</color>
     <color name="summer">#44eebd82</color>
     <color name="fall">#44d8d27e</color>

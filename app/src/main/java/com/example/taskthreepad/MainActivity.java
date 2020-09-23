@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showPopup();
 //                blurBackground();
+
             }
         });
 
@@ -94,15 +95,13 @@ public class MainActivity extends AppCompatActivity {
         HashSet<Date> events = new HashSet<>();
         events.add(new Date());
 
-        samples.aalamir.customcalendar.CalendarView cv = ((samples.aalamir.customcalendar.CalendarView)dialog.findViewById(R.id.calendarView));
+        samples.aalamir.customcalendar.CalendarView cv = ((samples.aalamir.customcalendar.CalendarView) dialog.findViewById(R.id.calendarView));
         cv.updateCalendar(events);
 
         // assign event handler
-        cv.setEventHandler(new samples.aalamir.customcalendar.CalendarView.EventHandler()
-        {
+        cv.setEventHandler(new samples.aalamir.customcalendar.CalendarView.EventHandler() {
             @Override
-            public void onDayLongPress(Date date)
-            {
+            public void onDayLongPress(Date date) {
                 // show returned day
                 DateFormat df = SimpleDateFormat.getDateInstance();
                 Toast.makeText(MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
@@ -110,48 +109,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        //---------------day header----------
-//        calendarView.setDayBinder(new DayBinder<DayViewContainer>() {
-//            @NonNull
-//            @Override
-//            public DayViewContainer create(@NonNull View view) {
-//                return new DayViewContainer(view);
-//            }
-//
-//            @Override
-//            public void bind(@NonNull DayViewContainer container, @NonNull CalendarDay day) {
-//                container.textView.setText(Integer.toString(day.getDate().getDayOfMonth()));
-//            }
-//        });
-//
-//        calendarView.setHasBoundaries(true);
-//        //---------------month header----------
-//        calendarView.setMonthHeaderBinder(new MonthHeaderFooterBinder<MonthViewContainer>() {
-//            @NotNull
-//            @Override
-//            public MonthViewContainer create(@NotNull View view) {
-//                return new MonthViewContainer(view);
-//            }
-//
-//            @Override
-//            public void bind(@NotNull MonthViewContainer viewContainer, @NotNull CalendarMonth calendarMonth) {
-//                //    viewContainer.tvMonth.setText(String.valueOf(calendarMonth.component1()));
-//
-//            }
-//        });
-//
-//
-//        YearMonth currentMonth = YearMonth.now();
-//        YearMonth firstMonth = currentMonth.minusMonths(20);
-//        YearMonth lastMonth = currentMonth.plusMonths(20);
-//        DayOfWeek firstDayOfWeek = WeekFields.of(Locale.getDefault()).getFirstDayOfWeek();
-//        calendarView.setup(firstMonth, lastMonth, firstDayOfWeek);
-//        calendarView.scrollToMonth(currentMonth);
-
-
         //------------------------time recycler  view----------------------------
-
 
 
         recyclerViewTime.setHasFixedSize(true);
@@ -179,13 +137,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //-------blur------
+
         Bitmap map = takeScreenShot(MainActivity.this);
         Bitmap fast = fastblur(map, 50);
         final Drawable draw = new BitmapDrawable(getResources(), fast);
         dialog.getWindow().setBackgroundDrawable(draw);
-
-        // dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //style id
+
         dialog.show();
 
 
@@ -227,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
         dialogdw.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogdw.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogdw.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialogdw.show();
     }
 
@@ -450,20 +410,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-//class DayViewContainer extends ViewContainer {
-//    TextView textView;
-//
-//    DayViewContainer(@NonNull View view) {
-//        super(view);
-//        textView = view.findViewById(R.id.calendarDayText);
-//    }
-//}
-//
-//class MonthViewContainer extends ViewContainer {
-//    TextView tvMonth;
-//
-//    MonthViewContainer(@NonNull View view) {
-//        super(view);
-//    }
-//}

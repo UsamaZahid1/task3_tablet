@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
     <!-- date toolbar -->
     <RelativeLayout
         android:id="@+id/relative_monthHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
         android:background="@color/white">
 
         <!-- prev button -->
@@ -65,11 +62,11 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="10dp"
             android:background="@drawable/corner"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_alignParentRight="true">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tv_yeardisplay"
@@ -86,13 +83,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 
-<!--    <include-->
-<!--        android:id="@+id/legendLayout"-->
-<!--        layout="@layout/month_header"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_gravity="center" />-->
+    <!--    <include-->
+    <!--        android:id="@+id/legendLayout"-->
+    <!--        layout="@layout/month_header"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="10dp"-->
+    <!--        android:layout_gravity="center" />-->
 
     <!-- days header -->
 
@@ -100,8 +97,8 @@
         android:id="@+id/calendar_header"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:background="#95000000"
         android:gravity="center_vertical"
-        android:background="#70000000"
         android:orientation="horizontal">
 
         <TextView
@@ -109,63 +106,63 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="SUN"/>
+            android:text="S"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="MON"/>
+            android:text="M"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="TUE"/>
+            android:text="T"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="WED"/>
+            android:text="W"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="THU"/>
+            android:text="T"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="FRI"/>
+            android:text="F"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:textColor="#222222"
-            android:text="SAT"/>
+            android:text="S"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
     <!-- days view -->
     <GridView
         android:id="@+id/calendar_grid"
         android:layout_width="match_parent"
-        android:background="#70000000"
         android:layout_height="match_parent"
-        android:numColumns="7"/>
+        android:background="#95000000"
+        android:numColumns="7" />
 </LinearLayout>

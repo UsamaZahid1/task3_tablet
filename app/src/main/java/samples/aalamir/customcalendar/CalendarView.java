@@ -2,7 +2,6 @@
 package samples.aalamir.customcalendar;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -31,9 +30,10 @@ import java.util.HashSet;
 public class CalendarView extends LinearLayout {
     // how many days to show, defaults to six weeks, 42 days
     private static final int DAYS_COUNT = 42;
+    int row_index=-1;
 
     // default date format
-    private static final String DATE_FORMAT = "MMM yyyy";
+    private static final String DATE_FORMAT = "MMM";
 
     // date format
     private String dateFormat;
@@ -49,7 +49,7 @@ public class CalendarView extends LinearLayout {
     private RelativeLayout monthHeader;
     private ImageView btnPrev;
     private ImageView btnNext;
-    private TextView txtDate;
+    private TextView txtDate,tvYear;
     private GridView grid;
 
     // seasons' rainbow
@@ -84,26 +84,25 @@ public class CalendarView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.control_calendar, this);
 
-
-        loadDateFormat(attrs);
+//        loadDateFormat(attrs);
         assignUiElements();
         assignClickHandlers();
 
         updateCalendar();
     }
 
-    private void loadDateFormat(AttributeSet attrs) {
-        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.CalendarView);
-
-        try {
-            // try to load provided date format, and fallback to default otherwise
-            dateFormat = ta.getString(R.styleable.CalendarView_dateFormat);
-            if (dateFormat == null)
-                dateFormat = DATE_FORMAT;
-        } finally {
-            ta.recycle();
-        }
-    }
+//    private void loadDateFormat(AttributeSet attrs) {
+//        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.CalendarView);
+//
+//        try {
+//            // try to load provided date format, and fallback to default otherwise
+//            dateFormat = ta.getString(R.styleable.CalendarView_dateFormat);
+//            if (dateFormat == null)
+//                dateFormat = DATE_FORMAT;
+//        } finally {
+//            ta.recycle();
+//        }
+//    }
 
     private void assignUiElements() {
         // layout is inflated, assign local variables to components
@@ -112,6 +111,7 @@ public class CalendarView extends LinearLayout {
         btnPrev = findViewById(R.id.calendar_prev_button);
         btnNext = findViewById(R.id.calendar_next_button);
         txtDate = findViewById(R.id.calendar_date_display);
+        tvYear = findViewById(R.id.tv_yeardisplay);
         grid = findViewById(R.id.calendar_grid);
 
         monthHeader.setBackgroundResource(0);
@@ -141,6 +141,7 @@ public class CalendarView extends LinearLayout {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id) {
+
                 // handle long-press
                 if (eventHandler == null)
                     return false;
@@ -149,6 +150,8 @@ public class CalendarView extends LinearLayout {
                 return true;
             }
         });
+
+
     }
 
     /**
@@ -182,15 +185,16 @@ public class CalendarView extends LinearLayout {
         grid.setAdapter(new CalendarAdapter(getContext(), cells, events));
 
         // update title
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
+        SimpleDateFormat year = new SimpleDateFormat("YYYY");
         txtDate.setText(sdf.format(currentDate.getTime()));
+        tvYear.setText(year.format(currentDate.getTime()));
 
         // set header color according to current season
         int month = currentDate.get(Calendar.MONTH);
         int season = monthSeason[month];
-        int color = rainbow[season];
 
-        header.setBackgroundColor(getResources().getColor(color));
+
     }
 
 
@@ -237,7 +241,7 @@ public class CalendarView extends LinearLayout {
 
             // clear styling
             ((TextView) view).setTypeface(null, Typeface.NORMAL);
-            ((TextView) view).setTextColor(Color.BLACK);
+            ((TextView) view).setTextColor(Color.WHITE);
 
             if (month != today.getMonth() || year != today.getYear()) {
                 // if this day is outside current month, grey it out

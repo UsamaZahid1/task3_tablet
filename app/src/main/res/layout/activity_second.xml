@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/secondActivity"
     xmlns:calendarNS="http://schemas.android.com/apk/res-auto"
     tools:context=".SecondActivity">
+
+<!--    <eightbitlab.com.blurview.BlurView-->
+<!--        android:id="@+id/blurView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        &lt;!&ndash;Any child View here, TabLayout for example&ndash;&gt;-->
+
+<!--    </eightbitlab.com.blurview.BlurView>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -88,7 +98,7 @@
                 android:layout_width="500dp"
                 android:layout_below="@+id/et_second_name"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
+                android:layout_height="395dp"
                 calendarNS:dateFormat="MMMM yyyy"/>
 
 
