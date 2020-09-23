@@ -1,60 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#70000000">
+    >
 
     <!-- date toolbar -->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingTop="12dp"-->
-<!--        android:paddingBottom="12dp"-->
-<!--        android:background="@color/white"-->
-<!--        android:paddingLeft="30dp"-->
-<!--        android:paddingRight="30dp">-->
-
-<!--        &lt;!&ndash; prev button &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:id="@+id/calendar_prev_button"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_alignParentLeft="true"-->
-<!--            android:src="@drawable/ic_baseline_chevron_left_24"/>-->
-
-<!--        &lt;!&ndash; date title &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:id="@+id/calendar_date_display"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_toRightOf="@+id/calendar_prev_button"-->
-<!--            android:layout_toLeftOf="@+id/calendar_next_button"-->
-<!--            android:gravity="center"-->
-<!--            android:textAppearance="@android:style/TextAppearance.Medium"-->
-<!--            android:textColor="#222222"-->
-<!--            android:text="current date"/>-->
-
-<!--        &lt;!&ndash; next button &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:id="@+id/calendar_next_button"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:src="@drawable/ic_baseline_chevron_right_24"/>-->
-<!--    </RelativeLayout>-->
-
-    <include
-        android:id="@+id/legendLayout"
-        layout="@layout/month_header"
+    <RelativeLayout
+        android:id="@+id/relative_monthHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center" />
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="@color/white">
+
+        <!-- prev button -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/corner"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/calendar_prev_button"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_baseline_chevron_left_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/calendar_date_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="April"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/calendar_next_button"
+                app:layout_constraintStart_toEndOf="@id/calendar_prev_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/calendar_next_button"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_baseline_chevron_right_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/corner"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/tv_yeardisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="2020"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+<!--    <include-->
+<!--        android:id="@+id/legendLayout"-->
+<!--        layout="@layout/month_header"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:layout_gravity="center" />-->
 
     <!-- days header -->
 
@@ -63,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center_vertical"
+        android:background="#70000000"
         android:orientation="horizontal">
 
         <TextView
@@ -126,6 +165,7 @@
     <GridView
         android:id="@+id/calendar_grid"
         android:layout_width="match_parent"
+        android:background="#70000000"
         android:layout_height="match_parent"
         android:numColumns="7"/>
 </LinearLayout>
